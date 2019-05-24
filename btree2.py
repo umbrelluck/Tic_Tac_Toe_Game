@@ -12,7 +12,7 @@ class Btree:
 
     def build(self):
         free_cells = self.root.board.free_cells()
-        # shuffle(free_cells)
+        shuffle(free_cells)
         for position in free_cells:
             new_board = self.root.move(position)
             new_tree = Btree(new_board, position)
@@ -39,8 +39,10 @@ class Btree:
         self.build()
         self.calculate()
         best = None
+        # self.root.result = max(board.root.result for board in self.games)
         for game in self.games:
-            if game.root.result == self.root.result and (not best or len(game) > len(best)):
+            if game.root.result > self.root.result or (
+                    game.root.result == self.root.result and (not best or len(game) > len(best))):
                 best = game
         # return best.root.result, best.root.cell
         return best.root.cell
