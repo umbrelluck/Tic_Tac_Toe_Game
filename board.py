@@ -1,7 +1,7 @@
 from copy import deepcopy
 
 
-# code by Oles
+# code by @dobosevych
 
 def gen_combos():
     combinations = []
